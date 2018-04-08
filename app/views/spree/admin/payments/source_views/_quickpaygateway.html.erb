@@ -1,0 +1,17 @@
+<% if payment.source.present? %>
+<fieldset data-hook="quickpay_payment_source">
+  <legend><%= payment.source.name %></legend>
+  <table class="table table-condensed table-bordered">
+    <% payment.source.details.each do |key, value| %>
+      <tr>
+        <th width="20%"><%= key %></th>
+        <td><%= value %></td>
+      </tr>
+    <% end %>
+  </table>
+</fieldset>
+<% else %>
+  <div class="alert alert-danger">
+    <%= Spree.t(:no_quickpay_transactions) %>
+  </div>
+<% end %>
